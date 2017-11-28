@@ -4,17 +4,17 @@ use \App\Cup;
 
 class CupBase implements Cup
 {
+	protected $out_cup = false;
 	protected $data = [
 		'now_water_hight' => 0,
 		'out_water_hight' => 10,
-		'outCup' => NULL
+		'out_cup_name' => NULL,
 	];
 
 	public function addWater(){
-		$this->log('進水');
 		$this->data['now_water_hight']++;
+		$this->log('進水');
 		$this->isFull();
-
 		if($this->data['now_water_hight']>$this->data['out_water_hight']){
 			$this->outWater();
 		}
@@ -22,20 +22,22 @@ class CupBase implements Cup
 
 	public function outWater(){
 		$this->data['now_water_hight']--;
-		$cup = '\App\\'.$this->data['outCup'];
-		$cup = new $cup();
-		$cup->addWater();
+		$this->log('出水');
+		if(!$this->out_cup){
+			$this->out_cup = '\App\\'.$this->data['out_cup_name'];
+			$this->out_cup = new $this->out_cup();
+		}
+		$this->out_cup->addWater();
 	}
 
 	public function isFull(){
-		$this->log('目前水位'.$this->data['now_water_hight']);
 		if(self::CupHigh==$this->data['now_water_hight']){
-			die($this->data['name'].' is Full');
+			die('<br />'.$this->data['name'].' is Full');
 		}
 		return true;
 	}
 
 	public function log($msg=''){
-		echo '<br />'.$this->data['name'].$msg;
+		echo '<br />'.str_replace('App\\','',$this->data['name']) . $msg . '目前水位：' . $this->data['now_water_hight'];
 	}
 }

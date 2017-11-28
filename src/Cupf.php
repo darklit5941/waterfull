@@ -3,11 +3,10 @@ namespace App;
 
 use \App\CupBase;
 
-class Cupb extends CupBase
+class Cupf extends CupBase
 {
 	protected $data = [
-		'out_water_hight' => 0,
-		'out_cup_name' => 'Cupc'
+		'out_water_hight' => 10
 	];
 
 	public function __construct(){

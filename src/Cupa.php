@@ -6,9 +6,8 @@ use \App\CupBase;
 class Cupa extends CupBase
 {
 	protected $data = [
-		'now_water_hight' => 0,
 		'out_water_hight' => 2,
-		'outCup' => 'Cupb'
+		'out_cup_name' => 'Cupb'
 	];
 
 	public function __construct(){

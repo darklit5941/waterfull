@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 
 $cupa = new \App\Cupa();
 
-for($i=0;$i<=10;$i++){
+for($i=0;$i<=18;$i++){
 	$cupa->addWater();
 }
 
