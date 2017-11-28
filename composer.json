@@ -1,0 +1,14 @@
+{
+    "name": "darklit/addcn-waterfull",
+    "authors": [
+        {
+            "name": "darklit",
+            "email": "david.hua@addcn.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}
